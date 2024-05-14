@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.apache.kafka.connect.errors.ConnectException;
-// import org.apache.kafka.connect.errors.DataException;
 import org.apache.kafka.connect.sink.ErrantRecordReporter;
 import org.apache.kafka.connect.sink.SinkRecord;
 import org.apache.kafka.connect.sink.SinkTask;
