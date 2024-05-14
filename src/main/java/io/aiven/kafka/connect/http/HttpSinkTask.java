@@ -119,7 +119,8 @@ public final class HttpSinkTask extends SinkTask {
         for (final var record : records) {
             if (record.value() == null) {
                 // TODO: consider optionally process them, e.g. use another verb or ignore
-                throw new DataException("Record value must not be null");
+                // throw new DataException("Record value must not be null");
+                log.warn("Record value must not be null");
             }
         }
 
