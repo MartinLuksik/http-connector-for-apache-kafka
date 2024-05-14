@@ -37,7 +37,7 @@ class JsonRecordValueConverter implements RecordValueConverter.Converter {
             return new String(
                 jsonConverter.fromConnectData(record.topic(), record.valueSchema(), record.value()),
                 StandardCharsets.UTF_8);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             return "";
         }
     }
