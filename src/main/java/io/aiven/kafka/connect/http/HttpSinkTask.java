@@ -94,19 +94,20 @@ public final class HttpSinkTask extends SinkTask {
         for (final var record : records) {
             if (record.value() == null) {
                 // TODO: consider optionally process them, e.g. use another verb or ignore
-                throw new DataException("Record value must not be null");
-            }
-
-            try {
-                recordSender.send(record);
-            } catch (final ConnectException e) {
-                if (reporter != null) {
-                    reporter.report(record, e);
-                } else {
-                    // otherwise, re-throw the exception
-                    throw new ConnectException(e.getMessage());
+                // throw new DataException("Record value must not be null");
+                log.warn("Record value must not be null");
+            } else {
+                try {
+                    recordSender.send(record);
+                } catch (final ConnectException e) {
+                    if (reporter != null) {
+                        reporter.report(record, e);
+                    } else {
+                        // otherwise, re-throw the exception
+                        throw new ConnectException(e.getMessage());
+                    }
                 }
-            }
+            }            
         }
     }
 
