@@ -33,9 +33,12 @@ class JsonRecordValueConverter implements RecordValueConverter.Converter {
 
     @Override
     public String convert(final SinkRecord record) {
-        return new String(
+        try {
+            return new String(
                 jsonConverter.fromConnectData(record.topic(), record.valueSchema(), record.value()),
                 StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            return "";
+        }
     }
-
 }
